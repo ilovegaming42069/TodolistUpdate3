@@ -1,7 +1,7 @@
 import React from 'react';
 import { statusSlugToDisplayName } from './StatusMapping'; // Assuming StatusMapping.js is in the same directory
 
-function Todolist({ item, status, deleteItem, updateStatus }) {
+function Todolist({ id, item, status, deleteItem, updateStatus }) {
   const formatStatus = (status) => {
     // Using the mapping object to get the display name of the status
     return statusSlugToDisplayName[status];
@@ -15,11 +15,11 @@ function Todolist({ item, status, deleteItem, updateStatus }) {
       </div>
       <div className="icons">
         {status !== 'done' && (
-          <button className="status-btn" onClick={updateStatus}>
+          <button className="status-btn" onClick={() => updateStatus(id)}>
             <i className="fa-solid fa-square-check"></i>
           </button>
         )}
-        <button className="icon-delete" onClick={deleteItem}>
+        <button className="icon-delete" onClick={() => deleteItem(id)}>
           <i className="fa-solid fa-square-minus icon-delete"></i>
         </button>
       </div>
